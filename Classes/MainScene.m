@@ -8,6 +8,7 @@
 // -----------------------------------------------------------------------
 
 #import "MainScene.h"
+#import "CCDragSprite.h"
 
 @implementation MainScene {
     // this is the section to place private instance variables!
@@ -35,7 +36,7 @@
     CGPoint touchLocation = [touch locationInNode:self];
     
     // create a 'hero' sprite
-    currentHero = [CCSprite spriteWithImageNamed:@"hero.png"];
+    currentHero = [CCDragSprite spriteWithImageNamed:@"hero.png"];
     [self addChild:currentHero];
     
     // place the sprite at the touch location
