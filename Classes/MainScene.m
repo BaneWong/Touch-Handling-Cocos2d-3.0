@@ -9,8 +9,10 @@
 
 #import "MainScene.h"
 
-@implementation MainScene
-
+@implementation MainScene {
+    // this is the section to place private instance variables!
+    CCSprite *currentHero;
+}
 
 + (MainScene *)scene
 {
@@ -33,12 +35,27 @@
     CGPoint touchLocation = [touch locationInNode:self];
     
     // create a 'hero' sprite
-    CCSprite *hero = [CCSprite spriteWithImageNamed:@"hero.png"];
-    [self addChild:hero];
+    currentHero = [CCSprite spriteWithImageNamed:@"hero.png"];
+    [self addChild:currentHero];
     
     // place the sprite at the touch location
-    hero.position = touchLocation;
+    currentHero.position = touchLocation;
 }
 
+- (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [touch locationInNode:self];
+    currentHero.position = touchLocation;
+}
+
+- (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    currentHero = nil;
+}
+
+- (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    currentHero = nil;
+}
 
 @end
