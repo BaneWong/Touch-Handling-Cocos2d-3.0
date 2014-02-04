@@ -29,7 +29,15 @@
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CCLOG(@"Received a touch");
+    // we want to know the location of our touch in this scene
+    CGPoint touchLocation = [touch locationInNode:self];
+    
+    // create a 'hero' sprite
+    CCSprite *hero = [CCSprite spriteWithImageNamed:@"hero.png"];
+    [self addChild:hero];
+    
+    // place the sprite at the touch location
+    hero.position = touchLocation;
 }
 
 
