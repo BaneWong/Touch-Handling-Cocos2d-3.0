@@ -21,13 +21,16 @@
 {
     if (self = [super init])
     {
-        CCLabelTTF *helloWorld = [CCLabelTTF labelWithString:@"Let's handle touches!" fontName:@"Arial" fontSize:48];
-        helloWorld.positionType = CCPositionTypeNormalized;
-        helloWorld.position = ccp(0.5f, 0.5f);
-        
-        [self addChild:helloWorld];
+        // activate touches on this scene
+        self.userInteractionEnabled = TRUE;
     }
 	return self;
 }
+
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CCLOG(@"Received a touch");
+}
+
 
 @end
